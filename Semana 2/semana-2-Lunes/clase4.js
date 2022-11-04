@@ -15,7 +15,7 @@ const itemsMenu = document.querySelectorAll('li');
 // console.log(itemsMenu);
 
 // hacemos un selector más específico👇
-// const infoExtra = document.querySelector('.info .clima')
+ //const infoExtra = document.querySelector('.info .clima')
 
 // console.log(infoExtra);
 const div = document.querySelector("div.info#info2")

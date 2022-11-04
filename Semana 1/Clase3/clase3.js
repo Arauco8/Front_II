@@ -13,7 +13,8 @@
 // -> Se encarga de comparar ambas elecciones y definir cómo le fue al usuario
 
 /* ------------------------------ 👇Comenzamos ------------------------------ */
-// Primero debemos limpiar los scripts anteriores y dejar solo las funciones, quitamos las variables y las empezamos a declarar solo en este script
+// Primero debemos limpiar los scripts anteriores y dejar solo las funciones, quitamos las variables y 
+// las empezamos a declarar solo en este script
 
 let puntajes = {
     usuario: 0,

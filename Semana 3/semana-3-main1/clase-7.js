@@ -44,16 +44,28 @@ const albumesFamosos = [{
 /* -------------------------------------------------------------------------- */
 //do while, prompt, innerText
 function obtenerUsuario() {
+    const nombreUsuario = document.querySelector('#nombreUsuario');
+    let usuario = "";
+    const regex = /\d/; //Las expresiones regulares son patrones que se utilizan para hacer coincidir combinaciones de caracteres en cadenas
+    // regex es una secuencia de caracteres que conforma un patrón de búsqueda
+    let ValidaSiTieneNumeros = true; // si la cadena contiene al menos un número el método test() devolverá true
+    // pedimos el nombre de usuario hasta que sea válido
+    do {
+        usuario = prompt('Ingrese su nombre de usuario:');
+        ValidaSiTieneNumeros =  regex.test(usuario.trim());//$("nombre").val().trim());
+    } while (usuario === null || usuario === "" || usuario.length < 3 || ValidaSiTieneNumeros);
 
+    // insertamos el nombre en el HTML
+    nombreUsuario.innerText = usuario;
 }
-// obtenerUsuario();
+obtenerUsuario();
 
 /* -------------------------------------------------------------------------- */
-/*                [2] FUNCION: renderizar tarjetas del almbumes               */
+/*                [2] FUNCION: renderizar tarjetas del albumes               */
 /* -------------------------------------------------------------------------- */
 //forEach, template strings, innerHTML
 function renderizarAlbumes(listado) {
-
+        
 };
 
 // renderizarAlbumes(albumesFamosos);

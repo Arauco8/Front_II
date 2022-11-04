@@ -65,7 +65,7 @@ function obtenerUsuario() {
 obtenerUsuario();
 
 /* -------------------------------------------------------------------------- */
-/*                [2] FUNCION: renderizar tarjetas del almbumes               */
+/*                [2] FUNCION: renderizar tarjetas del albumes               */
 /* -------------------------------------------------------------------------- */
 //forEach, template strings, innerHTML
 function renderizarAlbumes(listado) {
