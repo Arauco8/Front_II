@@ -33,37 +33,59 @@ materiasBtn.addEventListener("click", recorrerListadoYRenderizarTarjetas);
 cambiarTema.addEventListener("click", alternarColorTema);
 /* --------------------------- NO TOCAR HASTA ACÁ --------------------------- */
 
+const nombreLabel1= document.getElementById('nombre');
+const edadLabel = document.getElementById('edad');
+const ciudadLabel = document.getElementById('ciudad');
+const javascriptLabel = document.getElementById('javascript');
+const listaMateariasConteiner = document.getElementById('fila');
+const sobreMiLabel = document.getElementById('sobre-mi');
+
 function obtenerDatosDelUsuario() {
   /* --------------- PUNTO 1: Escribe tu codigo a partir de aqui --------------- */
- 
-
-
+    datosPersona.nombre = prompt('Ingrese su nombre:');
+    const date = new Date()
+    datosPersona.edad = date.getFullYear() - parseInt(prompt('Ingrese su año de Nacimiento'));
+    datosPersona.ciudad = prompt('Ingrese su Ciudad');
+    datosPersona.interesPorJs = prompt('Ingrese su Interese por JS')
+    console.log(datosPersona)  
 }
 
 function renderizarDatosUsuario() {
   /* ------------------- NO TOCAR NI ELIMINAR ESTA FUNCION. ------------------- */
   obtenerDatosDelUsuario();
   /* --------------- PUNTO 2: Escribe tu codigo a partir de aqui --------------- */
-  
-
-
+  nombreLabel1.textContent = datosPersona.nombre
+  edadLabel.textContent = datosPersona.edad
+  ciudadLabel.textContent = datosPersona.ciudad
+  javascriptLabel.textContent = datosPersona.interesPorJs ? "Si" : "No"
 }
 
 
 function recorrerListadoYRenderizarTarjetas() {
   /* ------------------ PUNTO 3: Escribe tu codigo desde aqui ------------------ */
-  
-
-
+  listado.forEach((elemento) => {
+      listaMateariasConteiner.innerHTML += `
+      <div class="caja">
+      <img src= "${elemento.imgUrl}"/>
+      <h6>${elemento.lenguajes} </h6>
+      <p>${elemento.bimestre} </p>
+      </div>
+      `
+  })
 }
 
 function alternarColorTema() {
   /* --------------------- PUNTO 4: Escribe tu codigo aqui --------------------- */
- 
-  
-
+  document.body.classList.toggle("dark")
 
 }
 
 /* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
 
+window.addEventListener("keypress", (e) => {
+  if(e.key === 'f'){
+      documentelement.classList.toggle('oculto')
+      
+  }
+
+})
