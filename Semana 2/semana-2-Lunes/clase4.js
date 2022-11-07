@@ -42,25 +42,59 @@ for (let campo in usuario) {
     console.log(usuario[campo])
 }
 
-contenedor.innerHTML += `
-<article>
-<h2>${usuario.nombre}</h2>
-<p>${usuario.edad} </p>
-<p>${usuario.ciudad}</p>
-</article>
-`
+// contenedor.innerHTML += `
+// <article>
+// <h2>${usuario.nombre}</h2>
+// <p>${usuario.edad} </p>
+// <p>${usuario.ciudad}</p>
+// </article>
+// `
 // for (let i = 0; i < articulos.length; i++) {
 //     console.log(articulos[i]);
 // }
 
 // Ahora hacemos la misma practica pero con ForEach, y accedemos a propiedades de los nodos.
-// articulos.forEach(articulo => {
-//     const titulo = articulo.querySelector('h2').innerText;
-//     console.log(titulo);
-//     // 💡 si quisieramos,acá podemos mutar los nodos, o cambiar algunas de sus propiedades
-// });
+articulos.forEach(articulo => {
+    const titulo = articulo.querySelector('h2').innerText;
+    console.log(titulo);
+    // 💡 si quisieramos,acá podemos mutar los nodos, o cambiar algunas de sus propiedades
+});
 
-
+let articulosASD = [
+    `
+    <article>
+        <h2> La renuncia de Liz Truss</h2>
+        <img src="./img/boris.webp" alt="">
+        <p>Boris Johnson interrumpió sus vacaciones y vuelve a sonar fuerte entre los posibles sucesores.</p>
+    </article>
+    `,
+    `
+    <article>
+        <h2>Los motivos</h2>
+        <img src="./img/escuela.webp" alt="">
+        <p>Una escuela argentina fue elegida entre las diez mejores del mundo.</p>
+    </article>
+    `,
+    `
+    <article>
+        <h2>La emoción de Lisandro Martínez</h2>
+        <img src="./img/futbol.webp" alt="">
+        <p>La increíble ovación de los hinchas de Manchester United al defensor argentino: "Quise llorar".</p>
+    </article>
+    `
+    ]
+    
+    document.getElementById("next").addEventListener("click", () => {
+        contenedor.innerHTML += articulosASD[1]
+    })
+            
+    
+    document.getElementById("cambiar-tema-button").addEventListener("click", () => {
+        const [mainNode] = Array.from(document.getElementsByTagName("main"))
+        mainNode.style.backgroundColor = "red"
+        console.log(window)
+    })
+    
 /* -------------------------------------------------------------------------- */
 /*                          CONSIGNA MESA DE TRABAJO                          */
 /* -------------------------------------------------------------------------- */

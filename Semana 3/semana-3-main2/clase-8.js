@@ -5,8 +5,20 @@
 // - cambiar el estado del like
 // - volver a renderizar
 function marcarFavorito() {
+    let botonesLike = document.querySelectorAll("i")
 
-
+    botonesLike.forEach(boton => {
+        boton.addEventListener("click", () => {
+            console.log(boton.id)
+            albumesFamosos.forEach(album => {
+                if (album.id === boton.id) {
+                    album.like = !album.like
+                }
+                renderizarAlbumes(albumesFamosos)
+                marcarFavorito()
+            })
+        })
+    })
 }
 marcarFavorito()
 
@@ -27,9 +39,14 @@ marcarFavorito()
 // 4- Si la busqueda nos da un resultado válido, procedemos a borrar el objeto del array
 // 5- Acto seguido debemos llamar a las funciones de renderizar y marcar favorito para que sean nuevamente aplicadas.
 
-function eliminarAlbum() {
-    // desarrollar la función 👇
+window.addEventListener("keydown", (e) => {
+    e.key === "f" && eliminarAlbum(prompt("Cual album queres eliminar?"))
+})
 
-
+function eliminarAlbum(nombreDelAlbum) {
+    //const nombreIndex = albumesFamosos.findIndex((e) => e.nombre.toLocaleLowerCase() === nombreDelAlbum.toLocaleLowerCase())
+    //albumesFamosos.splice(nombreIndex, nombreIndex+1)
+    //renderizarAlbumes(albumesFamosos)
+    const nuevoArray =  albumesFamosos.filter(element => element.nombre !== nombreDelAlbum)
+    renderizarAlbumes(nuevoArray)
 }
-eliminarAlbum();

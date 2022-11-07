@@ -50,6 +50,20 @@ window.addEventListener('load', function () {
 
 })
 
+setTimeout(()=> {
+    if(confirm("desea conocer mas musica?")){
+        window.open("https://open.spotify.com/", "Search")
+    } else {
+        const [perfil] = document.getElementsByClassName("perfil")
+        perfil.innerHTML += `
+        <p id="official-user" style="color: green">Usuario oficial de Spotifront</p>
+        `
+        document.getElementById("official-user").addEventListener("click", () => {
+            alert("Gracias por confiar en nosotros.")
+        })
+
+    }
+}, 12000)
 
 /* -------------------------------------------------------------------------- */
 /*                               MESA DE TRABAJO                              */
