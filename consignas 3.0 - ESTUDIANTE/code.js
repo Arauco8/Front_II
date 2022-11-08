@@ -42,6 +42,14 @@ const sobreMiLabel = document.getElementById('sobre-mi');
 
 function obtenerDatosDelUsuario() {
   /* --------------- PUNTO 1: Escribe tu codigo a partir de aqui --------------- */
+    const regex = /\d/; 
+    let ValidaSiTieneNumeros = true;
+
+    do {
+        datosPersona.nombre = prompt('Ingrese su nombre:');
+        ValidaSiTieneNumeros =  regex.test(datosPersona.nombre.trim());//$("nombre").val().trim());
+    } while (datosPersona.nombre === null || datosPersona.nombre === "" || (datosPersona.nombre).length < 3 || ValidaSiTieneNumeros);
+    
     datosPersona.nombre = prompt('Ingrese su nombre:');
     const date = new Date()
     datosPersona.edad = date.getFullYear() - parseInt(prompt('Ingrese su año de Nacimiento'));
@@ -61,14 +69,15 @@ function renderizarDatosUsuario() {
 }
 
 
-function recorrerListadoYRenderizarTarjetas() {
+function recorrerListadoYRenderizarTarjetas(e) {
   /* ------------------ PUNTO 3: Escribe tu codigo desde aqui ------------------ */
+  e.target.removeEventListener(e.type, recorrerListadoYRenderizarTarjetas);
   listado.forEach((elemento) => {
       listaMateariasConteiner.innerHTML += `
       <div class="caja">
       <img src= "${elemento.imgUrl}"/>
-      <h6>${elemento.lenguajes} </h6>
-      <p>${elemento.bimestre} </p>
+      <p class="lenguajes">${elemento.lenguajes} </h6>
+      <p class="bimestre">${elemento.bimestre} </p>
       </div>
       `
   })
@@ -81,11 +90,11 @@ function alternarColorTema() {
 }
 
 /* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
-
+let b = true;
 window.addEventListener("keypress", (e) => {
-  if(e.key === 'f'){
-      documentelement.classList.toggle('oculto')
-      
+  if(e.key === 'f' && b == true){
+      sobreMiLabel.classList.toggle('oculto')
+      b = false;
   }
 
 })
