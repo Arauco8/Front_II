@@ -44,18 +44,32 @@ function obtenerDatosDelUsuario() {
   /* --------------- PUNTO 1: Escribe tu codigo a partir de aqui --------------- */
     const regex = /\d/; 
     let ValidaSiTieneNumeros = true;
+    let fechaNacimiento = 0
+    let fechaLimite = 1900
 
     do {
         datosPersona.nombre = prompt('Ingrese su nombre:');
-        ValidaSiTieneNumeros =  regex.test(datosPersona.nombre.trim());//$("nombre").val().trim());
-    } while (datosPersona.nombre === null || datosPersona.nombre === "" || (datosPersona.nombre).length < 3 || ValidaSiTieneNumeros);
+        ValidaSiTieneNumeros =  regex.test(datosPersona.nombre.trim());
+    } while (datosPersona.nombre === null || datosPersona.nombre === "" || datosPersona.nombre.length < 4 || ValidaSiTieneNumeros);
+
+    do{
+      fechaNacimiento = parseInt(prompt('Ingrese su año de Nacimiento'));
+      datosPersona.edad = calcularEdad(fechaNacimiento) 
+    } while ( isNaN(fechaNacimiento) || fechaNacimiento  === ""  || fechaNacimiento <= fechaLimite);
     
-    datosPersona.nombre = prompt('Ingrese su nombre:');
-    const date = new Date()
-    datosPersona.edad = date.getFullYear() - parseInt(prompt('Ingrese su año de Nacimiento'));
-    datosPersona.ciudad = prompt('Ingrese su Ciudad');
-    datosPersona.interesPorJs = prompt('Ingrese su Interese por JS')
+    do {
+      datosPersona.ciudad = prompt('Ingrese su Ciudad');
+      ValidaSiTieneNumeros =  regex.test(datosPersona.nombre.trim());
+  } while (datosPersona.ciudad  === null || datosPersona.ciudad === "" || datosPersona.ciudad.length < 4 || ValidaSiTieneNumeros);
+    
+    datosPersona.interesPorJs = confirm('Ingrese su Interese por JS')
     console.log(datosPersona)  
+}
+
+function calcularEdad(fecha_nacimiento) {
+  let hoy = new Date();
+  let edad = hoy.getFullYear() - fecha_nacimiento;
+  return edad;
 }
 
 function renderizarDatosUsuario() {
@@ -90,11 +104,12 @@ function alternarColorTema() {
 }
 
 /* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
-let b = true;
-window.addEventListener("keypress", (e) => {
-  if(e.key === 'f' && b == true){
-      sobreMiLabel.classList.toggle('oculto')
-      b = false;
-  }
 
+window.addEventListener("keypress", (e) => {
+  if(e.key === 'f'){
+      sobreMiLabel.classList.toggle('oculto')
+      document.querySelector("#sobre-mi").classList.remove("oculto")
+  }
+  
 })
+
