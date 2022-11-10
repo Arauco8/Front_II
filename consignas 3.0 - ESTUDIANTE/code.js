@@ -42,24 +42,24 @@ const sobreMiLabel = document.getElementById('sobre-mi');
 
 function obtenerDatosDelUsuario() {
   /* --------------- PUNTO 1: Escribe tu codigo a partir de aqui --------------- */
-    const regex = /\d/; 
-    let ValidaSiTieneNumeros = true;
-    let fechaNacimiento = 0
-    let fechaLimite = 1900
+  const regex = /\d/; 
+  let ValidaSiTieneNumeros = true;
+  let fechaNacimiento = 0
+  let fechaLimite = 1900
 
-    do {
-        datosPersona.nombre = prompt('Ingrese su nombre:');
-        ValidaSiTieneNumeros =  regex.test(datosPersona.nombre.trim());
-    } while (datosPersona.nombre === null || datosPersona.nombre === "" || datosPersona.nombre.length < 4 || ValidaSiTieneNumeros);
-
-    do{
-      fechaNacimiento = parseInt(prompt('Ingrese su año de Nacimiento'));
-      datosPersona.edad = calcularEdad(fechaNacimiento) 
-    } while ( isNaN(fechaNacimiento) || fechaNacimiento  === ""  || fechaNacimiento <= fechaLimite);
-    
-    do {
-      datosPersona.ciudad = prompt('Ingrese su Ciudad');
+  do {
+      datosPersona.nombre = prompt('Ingrese su nombre:');
       ValidaSiTieneNumeros =  regex.test(datosPersona.nombre.trim());
+  } while (datosPersona.nombre === null || datosPersona.nombre === "" || datosPersona.nombre.length < 4 || ValidaSiTieneNumeros);
+
+  do{
+    fechaNacimiento = parseInt(prompt('Ingrese su año de Nacimiento'));
+    datosPersona.edad = calcularEdad(fechaNacimiento) 
+  } while ( isNaN(fechaNacimiento) || fechaNacimiento  === ""  || fechaNacimiento <= fechaLimite);
+  
+  do {
+    datosPersona.ciudad = prompt('Ingrese su Ciudad');
+    ValidaSiTieneNumeros =  regex.test(datosPersona.nombre.trim());
   } while (datosPersona.ciudad  === null || datosPersona.ciudad === "" || datosPersona.ciudad.length < 4 || ValidaSiTieneNumeros);
     
     datosPersona.interesPorJs = confirm('Ingrese su Interese por JS')
@@ -110,6 +110,6 @@ window.addEventListener("keypress", (e) => {
       sobreMiLabel.classList.toggle('oculto')
       document.querySelector("#sobre-mi").classList.remove("oculto")
   }
-  
+
 })
 
