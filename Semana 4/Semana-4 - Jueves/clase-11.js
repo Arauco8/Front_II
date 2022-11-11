@@ -60,7 +60,10 @@ formulario.addEventListener('submit', function(evento){
     const errores = validarInformacion(datos);
     console.log(errores);
 
-    formulario.reset();
+    renderizarErrores(errores);
+    mostrarMensajeExito(errores);
+
+    // formulario.reset();
 })
 
 
@@ -81,28 +84,29 @@ formulario.addEventListener('submit', function(evento){
 // 5- Si no hay una nacionalidad definida, sumar el error: "Debe seleccionar una nacionalidad."
 function validarInformacion(usuario) {
     let errores = [];
-    let name = usuario.nombre;
-    let pass = usuario.password.replace(/\s+/g , '');
-    let tel = usuario.telefono;
-    let hobb = usuario.hobbies;
-    let nac = usuario.nacionalidad;
     // 👇 desarrollar aqui la funcion
-    if (!isNaN(name) || name.length < 3) {
-        errores.push("El nombre debe tener al menos 3 caracteres")
+    
+    // validando el nombre
+    if (usuario.nombre.length < 3) {
+    errores.push("El nombre debe tener al menos 3 caracteres.")
     }
-    if (pass.length < 6) {
-        console.log(pass)
-        errores.push("La contraseña debe tener al menos 6 caracteres, entre letras y símbolos")
+    // validando la contraseña
+    if (usuario.password.trim().length < 3) {
+    errores.push("La contraseña debe tener al menos 6 caracteres, entre letras y símbolos.")
     }
-    if (tel.length < 10) {
-        errores.push("No es un teléfono válido")
+    // validando la contraseña
+    if (usuario.telefono.length < 10) {
+    errores.push("No es un teléfono válido.")
     }
-    if (hobb.length > 4) {
-        errores.push("Sólo es posible seleccionar 4 hobbies")
+    // validando la contraseña
+    if (usuario.hobbies.length > 4) {
+    errores.push("Sólo es posible seleccionar 4 hobbies.")
     }
-    if (nac == '') {
-        errores.push("Debe seleccionar una nacionalidad")
+    // validando la contraseña
+    if (usuario.nacionalidad == "") {
+    errores.push("Debe seleccionar una nacionalidad.")
     }
+    
     return errores;
 }
 
